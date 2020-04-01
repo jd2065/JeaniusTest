@@ -1,0 +1,43 @@
+properties([
+
+    parameters([
+        string(
+            name: 'RCR', 
+            description: 'Enter RCR', 
+			defaultValue: '',
+        ), 
+		choice(
+            name: 'Region', 
+            description: 'Select Region', 
+            choices: ["US"],
+        ), 
+		choice(
+            name: 'Client', 
+            description: 'Select Client', 
+            choices: ["","PRG","GMR"],
+        ), 
+		choice(
+            name: 'DeployEnv', 
+            description: 'Select Environment', 
+            choices: ["","DEV","QA","UAT"],
+        ), 
+	])
+])
+
+pipeline {
+    agent {
+        node {
+            label 'ansible'
+        }
+    }
+    stages {
+        stage ('Deploy Code') {
+            steps{
+                git credentialsId: 'jeantest_git', url: 'https://github.com/MitchellSandboxOrg/JeanTest'
+                sh 'ls -altr'
+                sh 'echo ${DeployEnv}'
+            }
+            
+        }
+    }
+}
