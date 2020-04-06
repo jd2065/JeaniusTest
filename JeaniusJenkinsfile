@@ -34,7 +34,7 @@ properties([
                         {
                           return ["\\\\\\\\cm1nt\\\\apps\\\\temp\\\\SnowFlake"]
                         }
-                        else if (DeplEnv.equals("qa"))
+                        else if (DeployEnv.equals("qa"))
                         {
                           return ["eval me"]
                         }
