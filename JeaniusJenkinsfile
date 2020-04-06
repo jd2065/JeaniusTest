@@ -9,7 +9,7 @@ properties([
 		choice(
             name: 'Region', 
             description: 'Select Region', 
-            choices: ["US"],
+            choices: ["US","\\\\\\\\\\\\cm1nt\\\\\\"],
         ), 
 		choice(
             name: 'Client', 
