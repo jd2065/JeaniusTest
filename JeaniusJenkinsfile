@@ -9,7 +9,7 @@ properties([
 		choice(
             name: 'Region', 
             description: 'Select Region', 
-            choices: ["US","\\\\\\\\\\\\cm1nt\\\\\\"],
+            choices: ["US","\\\\\\\\cm1nt\\\\"],
         ), 
 		choice(
             name: 'Client', 
@@ -33,7 +33,6 @@ pipeline {
     stages {
         stage ('Deploy Code') {
             steps{
-                git credentialsId: 'jeantest_git', url: 'https://github.com/MitchellSandboxOrg/JeanTest'
                 sh 'ls -altr'
                 sh 'echo ${DeployEnv}'
             }
