@@ -19,7 +19,7 @@ properties([
 		choice(
             name: 'DeployEnv', 
             description: 'Select Environment', 
-            choices: ["","DEV","QA","UAT"],
+            choices: ["","DEV","QA","UAT","scm"],
         ), 
         [$class: 'CascadeChoiceParameter',
             choiceType: 'PT_SINGLE_SELECT',
@@ -34,7 +34,7 @@ properties([
                         {
                           return ["\\\\\\\\cm1nt\\\\apps\\\\temp\\\\SnowFlake"]
                         }
-                        else if (${DeplEnv} == "qa" && ${BusinessUnit} == "ACS")
+                        else if (DeplEnv.equals("qa"))
                         {
                           return ["eval me"]
                         }
