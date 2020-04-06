@@ -9,7 +9,7 @@ properties([
 		choice(
             name: 'Region', 
             description: 'Select Region', 
-            choices: ["US","\\\\\\\\cm1nt\\\\"],
+            choices: ["US"],
         ), 
 		choice(
             name: 'Client', 
@@ -21,6 +21,30 @@ properties([
             description: 'Select Environment', 
             choices: ["","DEV","QA","UAT"],
         ), 
+        [$class: 'CascadeChoiceParameter',
+            choiceType: 'PT_SINGLE_SELECT',
+            description: 'Target GCP ProjectName',
+            name: 'ProjectNames',
+            referencedParameters: 'DeployEnv',
+            script: [
+                $class: 'GroovyScript', 
+                script: [
+                    script: '''
+                        if (DeployEnv.equals("scm"))
+                        {
+                          return ["\\\\\\cm1nt\\\\apps\\\\temp\\\\SnowFlake"]
+                        }
+                        else if (${DeplEnv} == "qa" && ${BusinessUnit} == "ACS")
+                        {
+                          return ["eval me"]
+                        }
+                        else
+                        {
+                          return ["Select Environment"]
+                        } '''
+                ],
+            ],
+        ],	
 	])
 ])
 
