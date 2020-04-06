@@ -32,7 +32,7 @@ properties([
                     script: '''
                         if (DeployEnv.equals("scm"))
                         {
-                          return ["\\\\\\cm1nt\\\\apps\\\\temp\\\\SnowFlake"]
+                          return ["\\\\\\\\cm1nt\\\\apps\\\\temp\\\\SnowFlake"]
                         }
                         else if (${DeplEnv} == "qa" && ${BusinessUnit} == "ACS")
                         {
