@@ -38,6 +38,7 @@ pipeline {
                 	echo $DeployEnv
 			hellow = load './helloworld.groovy'
 			hellow()
+		}
             }
             
         }
