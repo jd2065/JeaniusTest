@@ -21,30 +21,6 @@ properties([
             description: 'Select Environment', 
             choices: ["","DEV","QA","UAT","scm"],
         ), 
-        [$class: 'CascadeChoiceParameter',
-            choiceType: 'PT_SINGLE_SELECT',
-            description: 'Target GCP ProjectName',
-            name: 'ProjectNames',
-            referencedParameters: 'DeployEnv',
-            script: [
-                $class: 'GroovyScript', 
-                script: [
-                    script: '''
-                        if (DeployEnv.equals("scm"))
-                        {
-                          return ["\\\\\\\\cm1nt\\\\apps\\\\temp\\\\SnowFlake"]
-                        }
-                        else if (DeployEnv.equals("QA"))
-                        {
-                          return ["eval me"]
-                        }
-                        else
-                        {
-                          return ["Select Environment"]
-                        } '''
-                ],
-            ],
-        ],	
 	])
 ])
 
