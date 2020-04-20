@@ -25,9 +25,9 @@ pipeline {
             
         }
 		stage ('Code') {
-			checkout scm
 			steps{
-                script {
+			checkout scm
+			script {
 					[$class: 'ExecuteDslScripts',
 						scriptLocation: [targets: './helloworld.groovy',],
 						usingScriptText: false,
