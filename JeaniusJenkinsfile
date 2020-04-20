@@ -57,10 +57,11 @@ pipeline {
     stages {
         stage ('Deploy Code') {
             steps{
-                sh 'ls -altr'
-                sh 'echo ${DeployEnv}'
-		hellow = load "./helloworld.groovy"
-		hellow()
+                script {
+			ls -altr
+                	echo $DeployEnv
+			hellow = load './helloworld.groovy'
+			hellow()
             }
             
         }
