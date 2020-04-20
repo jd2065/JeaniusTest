@@ -59,7 +59,7 @@ pipeline {
             steps{
                 sh 'ls -altr'
                 sh 'echo ${DeployEnv}'
-		hellow = load 'helloworld.groovy'
+		hellow = load "./helloworld.groovy"
 		hellow()
             }
             
