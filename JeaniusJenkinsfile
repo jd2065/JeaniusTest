@@ -6,21 +6,6 @@ properties([
             description: 'Enter RCR', 
 			defaultValue: '',
         ), 
-		choice(
-            name: 'Region', 
-            description: 'Select Region', 
-            choices: ["US"],
-        ), 
-		choice(
-            name: 'Client', 
-            description: 'Select Client', 
-            choices: ["","PRG","GMR"],
-        ), 
-		choice(
-            name: 'DeployEnv', 
-            description: 'Select Environment', 
-            choices: ["","DEV","QA","UAT","scm"],
-        ), 
 	])
 ])
 
@@ -34,10 +19,32 @@ pipeline {
         stage ('Deploy Code') {
             steps{
                 script {
-			groovy './helloworld.groovy'
-		}
+					groovy './helloworld.groovy'
+				}
             }
             
         }
+		stage ('Code') {
+            steps{
+                script {
+					checkout scm
+					[$class: 'ExecuteDslScripts',
+						scriptLocation: [targets: './helloworld.groovy',],
+						usingScriptText: false,
+						ignoreExisting: false,
+						ignoreMissingFiles: false,
+						failOnMissingPlugin: true,
+						failOnSeedCollision: true,
+						unstableOnDeprecation: true,
+						removedJobAction: 'IGNORE',
+						removedViewAction: 'IGNORE',
+						removedConfigFilesAction: 'IGNORE',
+						lookupStrategy: 'JENKINS_ROOT'
+                    ]
+
+				}
+            }
+            
+        }		
     }
 }
