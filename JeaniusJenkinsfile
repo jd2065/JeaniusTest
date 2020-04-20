@@ -25,9 +25,9 @@ pipeline {
             
         }
 		stage ('Code') {
-            steps{
+			checkout scm
+			steps{
                 script {
-					checkout scm
 					[$class: 'ExecuteDslScripts',
 						scriptLocation: [targets: './helloworld.groovy',],
 						usingScriptText: false,
@@ -41,7 +41,6 @@ pipeline {
 						removedConfigFilesAction: 'IGNORE',
 						lookupStrategy: 'JENKINS_ROOT'
                     ]
-
 				}
             }
             
