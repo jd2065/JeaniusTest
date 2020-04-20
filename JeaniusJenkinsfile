@@ -35,7 +35,7 @@ pipeline {
             steps{
                 script {
 			hellow = load './helloworld.groovy'
-			hellow()
+			hellow
 		}
             }
             
