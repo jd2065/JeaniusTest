@@ -16,18 +16,11 @@ pipeline {
         }
     }
     stages {
-        stage ('Deploy Code') {
-            steps{
-                script {
-					groovy './helloworld.groovy'
-				}
-            }
-            
-        }
+
 		stage ('Code') {
-			steps{
 			checkout scm
-			script {
+			steps{
+                script {
 					[$class: 'ExecuteDslScripts',
 						scriptLocation: [targets: './helloworld.groovy',],
 						usingScriptText: false,
