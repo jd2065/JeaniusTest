@@ -34,8 +34,7 @@ pipeline {
         stage ('Deploy Code') {
             steps{
                 script {
-			hellow = load './helloworld.groovy'
-			hellow
+			groovy './helloworld.groovy'
 		}
             }
             
