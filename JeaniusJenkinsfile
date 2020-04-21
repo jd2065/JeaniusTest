@@ -26,10 +26,7 @@ pipeline {
 					failOnMissingPlugin: true,
 					failOnSeedCollision: true,
 					unstableOnDeprecation: true,
-					removedJobAction: 'IGNORE',
-					removedViewAction: 'IGNORE',
-					removedConfigFilesAction: 'IGNORE',
-					lookupStrategy: 'JENKINS_ROOT'
+
                 ])
             }
             
