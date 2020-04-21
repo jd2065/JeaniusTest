@@ -18,15 +18,12 @@ pipeline {
     stages {
 		stage ('Code') {
 			steps{
-				step([$class: 'ExecuteDslScripts',
-					scriptLocation: [targets: './helloworld.groovy',],
-					ignoreExisting: false,
-					ignoreMissingFiles: false,
-					failOnMissingPlugin: true,
-					failOnSeedCollision: true,
-					unstableOnDeprecation: true,
 
-                ])
+step([
+        $class: 'ExecuteDslScripts',
+        targets: ['./helloworld.groovy'].join('\n'),
+        ignoreMissingFiles: true
+    ])				
             }
             
         }		
