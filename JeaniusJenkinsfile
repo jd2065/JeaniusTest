@@ -18,7 +18,7 @@ pipeline {
     stages {
 		stage ('Code') {
 			steps{
-				step([
+				script {[
 						$class: 'ExecuteDslScripts',
 						targets: ['./helloworld.groovy'].join('\n'),
 						usingScriptText: false,
@@ -31,7 +31,7 @@ pipeline {
 						removedViewAction: 'IGNORE',
 						removedConfigFilesAction: 'IGNORE',
 						lookupStrategy: 'JENKINS_ROOT'
-				])				
+				]}				
             }
             
         }		
