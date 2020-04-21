@@ -18,21 +18,22 @@ pipeline {
     stages {
 		stage ('Code') {
 			steps{
-			script {
-[$class: 'ExecuteDslScripts',
-						scriptLocation: [targets: './helloworld.groovy',],
-						usingScriptText: true,
-						ignoreExisting: false,
-						ignoreMissingFiles: false,
-						failOnMissingPlugin: true,
-						failOnSeedCollision: true,
-						unstableOnDeprecation: true,
-						removedJobAction: 'IGNORE',
-						removedViewAction: 'IGNORE',
-						removedConfigFilesAction: 'IGNORE',
-						lookupStrategy: 'JENKINS_ROOT'
+				script {
+					[$class: 'ExecuteDslScripts',
+					scriptLocation: [targets: './helloworld.groovy',],
+					usingScriptText: true,
+					ignoreExisting: false,
+					ignoreMissingFiles: false,
+					failOnMissingPlugin: true,
+					failOnSeedCollision: true,
+					unstableOnDeprecation: true,
+					removedJobAction: 'IGNORE',
+					removedViewAction: 'IGNORE',
+					removedConfigFilesAction: 'IGNORE',
+					lookupStrategy: 'JENKINS_ROOT'
                     ]
-		    echo $ExecuteDslScripts
+				echo $ExecuteDslScripts
+				}
             }
             
         }		
