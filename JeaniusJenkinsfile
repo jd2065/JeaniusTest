@@ -20,7 +20,7 @@ pipeline {
 			steps{
 			step([
 			    $class: 'ExecuteDslScripts',
-			    targets: ['./helloworld.groovy'],
+			    targets: ['./helloworld.groovy'].join('\n'),
 			    ignoreExisting: false,
 			    ignoreMissingFiles: false,
 			    failOnMissingPlugin: true,
