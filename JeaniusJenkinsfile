@@ -20,7 +20,6 @@ pipeline {
 			steps{
 				step([$class: 'ExecuteDslScripts',
 					scriptLocation: [targets: './helloworld.groovy',],
-					usingScriptText: true,
 					ignoreExisting: false,
 					ignoreMissingFiles: false,
 					failOnMissingPlugin: true,
