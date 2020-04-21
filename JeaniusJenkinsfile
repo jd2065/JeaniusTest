@@ -32,7 +32,7 @@ pipeline {
 						removedConfigFilesAction: 'IGNORE',
 						lookupStrategy: 'JENKINS_ROOT'
                     ]
-		    test
+		    return test
 				}
             }
             
